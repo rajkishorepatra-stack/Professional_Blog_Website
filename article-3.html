@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript ES6+ Features Explained - ModernBlog</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .article-detail-container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
+    .article-header { margin-bottom: 2rem; }
+    .article-category-tag { display: inline-block; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 0.4rem 1rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+    .article-detail-container h1 { font-family: 'Poppins', sans-serif; font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; color: var(--text-primary); }
+    .article-detail-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
+    .article-detail-meta span { display: flex; align-items: center; gap: 0.5rem; }
+    .article-detail-image { width: 100%; height: auto; max-height: 400px; object-fit: cover; border-radius: 0.75rem; margin-bottom: 2rem; box-shadow: var(--shadow-md); }
+    .article-content { line-height: 1.8; color: var(--text-primary); }
+    .article-content p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+    .article-content h2 { font-family: 'Poppins', sans-serif; font-size: 1.8rem; margin: 2rem 0 1rem; color: var(--text-primary); }
+    .code-block { background: var(--bg-light); padding: 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); overflow-x: auto; font-family: 'Courier New', monospace; font-size: 0.9rem; }
+    .quote-block { background: var(--bg-light); padding: 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); font-style: italic; color: var(--text-secondary); }
+    .article-author-box { background: var(--bg-white); padding: 2rem; border-radius: 0.75rem; box-shadow: var(--shadow-sm); margin: 3rem 0; display: flex; gap: 1.5rem; }
+    .author-avatar { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .author-info h3 { font-size: 1.1rem; margin-bottom: 0.25rem; color: var(--text-primary); }
+    .author-info .role { color: var(--primary-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .share-buttons { display: flex; gap: 1rem; margin: 2rem 0; padding: 2rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+    .share-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-light); color: var(--primary-color); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: var(--transition); }
+    .share-btn:hover { background: var(--primary-color); color: white; transform: translateY(-3px); }
+    .breadcrumb { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 2rem; color: var(--text-secondary); font-size: 0.95rem; }
+    .breadcrumb a { color: var(--primary-color); text-decoration: none; }
+    .related-articles { margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--border-color); }
+    .related-articles h2 { font-family: 'Poppins', sans-serif; font-size: 1.5rem; margin-bottom: 2rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .related-card { background: var(--bg-white); border-radius: 0.75rem; overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .related-card:hover { transform: translateY(-5px); }
+    .related-card img { width: 100%; height: 150px; object-fit: cover; }
+    .related-link { color: var(--primary-color); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+    @media (max-width: 768px) { .article-detail-container { padding: 1.5rem; } .article-detail-container h1 { font-size: 1.8rem; } .related-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-container">
+      <div class="logo"><i class="fas fa-pen-nib"></i> ModernBlog</div>
+      <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="articles.html" class="nav-link">Articles</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="search-container">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+        </div>
+        <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-wrapper">
+    <div class="article-detail-container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <a href="articles.html">Articles</a> <i class="fas fa-chevron-right"></i> <span>JavaScript ES6+ Features</span>
+      </div>
+
+      <div class="article-header">
+        <span class="article-category-tag">JavaScript</span>
+        <h1>JavaScript ES6+ Features Explained</h1>
+        <div class="article-detail-meta">
+          <span><i class="fas fa-calendar-alt"></i> February 15, 2026</span>
+          <span><i class="fas fa-user"></i> Mike Johnson</span>
+          <span><i class="fas fa-clock"></i> 12 min read</span>
+          <span><i class="fas fa-eye"></i> 4,230 views</span>
+        </div>
+      </div>
+
+      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=900&h=450&fit=crop" alt="JavaScript ES6" class="article-detail-image">
+
+      <div class="share-buttons">
+        <a href="#" class="share-btn"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="share-btn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="share-btn"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="share-btn"><i class="fas fa-link"></i></a>
+      </div>
+
+      <article class="article-content">
+        <p>ES6 (ECMAScript 2015) introduced revolutionary features that transformed JavaScript development. Arrow functions, destructuring, promises, and async/await have become essential tools for modern developers. Let's explore these game-changing features.</p>
+
+        <h2>Arrow Functions</h2>
+        <p>Arrow functions provide a concise syntax and lexical this binding, making code cleaner and more predictable.</p>
+        <div class="code-block">
+// Traditional function<br>
+function add(a, b) {<br>
+&nbsp;&nbsp;return a + b;<br>
+}<br>
+<br>
+// Arrow function<br>
+const add = (a, b) => a + b;
+        </div>
+
+        <h2>Destructuring</h2>
+        <p>Destructuring allows you to unpack values from arrays or properties from objects in a clean, readable way.</p>
+        <div class="code-block">
+// Array destructuring<br>
+const [x, y] = [1, 2];<br>
+<br>
+// Object destructuring<br>
+const { name, age } = { name: 'John', age: 30 };
+        </div>
+
+        <h2>Async/Await</h2>
+        <p>Async/await makes asynchronous code look and behave more like synchronous code, making it easier to read and debug.</p>
+        <div class="code-block">
+async function fetchData() {<br>
+&nbsp;&nbsp;try {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const response = await fetch('/api/data');<br>
+&nbsp;&nbsp;&nbsp;&nbsp;const data = await response.json();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return data;<br>
+&nbsp;&nbsp;} catch (error) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;console.error(error);<br>
+&nbsp;&nbsp;}<br>
+}
+        </div>
+
+        <h2>Conclusion</h2>
+        <p>ES6+ features have made JavaScript more powerful and expressive. Mastering these features will significantly improve your development workflow and code quality.</p>
+      </article>
+
+      <div class="article-author-box">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike" alt="Mike Johnson" class="author-avatar">
+        <div class="author-info">
+          <h3>Mike Johnson</h3>
+          <p class="role">JavaScript Specialist</p>
+          <p>Mike is a full-stack JavaScript developer with extensive experience in modern frameworks. He's passionate about functional programming and teaching.</p>
+        </div>
+      </div>
+
+      <section class="related-articles">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+          <div class="related-card"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=150&fit=crop" alt="HTML5"><div class="related-card-content"><h3>HTML5</h3><a href="article-1.html" class="related-link">Read More <i class="fas fa-arrow-right"></i></a></div></div>
+          <div class="related-card"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=150&fit=crop" alt="CSS"><div class="related-card-content"><h3>CSS Layout</h3><a href="article-2.html" class="related-link">Read More <i class="fas fa-arrow-right"></i></a></div></div>
+          <div class="related-card"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=150&fit=crop" alt="Responsive"><div class="related-card-content"><h3>Responsive Design</h3><a href="article-4.html" class="related-link">Read More <i class="fas fa-arrow-right"></i></a></div></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section"><h4>About ModernBlog</h4><p>A platform for sharing knowledge about modern web development and technology trends.</p></div>
+      <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="articles.html">Articles</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-section"><h4>Follow Us</h4><div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fas fa-envelope"></i></a></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 ModernBlog. All rights reserved. | Crafted with <i class="fas fa-heart"></i> by Modern Developer</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

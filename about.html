@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - ModernBlog</title>
+  <meta name="description" content="Learn about ModernBlog and our mission to share web development knowledge with the world.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* About Page Specific Styles */
+    .about-hero {
+      background: linear-gradient(135deg, #4a6cf7 0%, #6a82fb 100%);
+      color: white;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .about-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .about-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .about-section {
+      margin-bottom: 4rem;
+    }
+
+    .about-section h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .about-section p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .team-member {
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .team-member:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .team-member img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+      object-fit: cover;
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-member h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .team-member .role {
+      color: var(--primary-color);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .team-member p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+    }
+
+    .team-member-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .team-member-social a {
+      width: 2.2rem;
+      height: 2.2rem;
+      border-radius: 50%;
+      background: var(--bg-light);
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .team-member-social a:hover {
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .value-card {
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .value-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .value-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .value-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-primary);
+    }
+
+    .value-card p {
+      color: var(--text-secondary);
+    }
+
+    .milestone-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .milestone {
+      background: var(--bg-white);
+      padding: 1.5rem;
+      border-radius: 0.75rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border-top: 3px solid var(--primary-color);
+    }
+
+    .milestone-year {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .milestone-text {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .about-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .about-section h2 {
+        font-size: 1.5rem;
+      }
+
+      .team-grid,
+      .values-grid,
+      .milestone-timeline {
+        grid-template-columns: 1fr;
+      }
+
+      .about-content {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-pen-nib"></i> ModernBlog
+      </div>
+      
+      <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="articles.html" class="nav-link">Articles</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-actions">
+        <div class="search-container">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="about-hero">
+    <h1>About ModernBlog</h1>
+    <p>Sharing Knowledge, Building Community, Creating Impact</p>
+  </section>
+
+  <!-- About Content -->
+  <div class="main-wrapper">
+    <div class="about-content">
+
+      <!-- Our Mission -->
+      <section class="about-section">
+        <h2>Our Mission</h2>
+        <p>
+          We believe that quality education should be accessible to everyone. ModernBlog is dedicated to providing comprehensive, 
+          up-to-date articles on web development and modern technologies. Our goal is to help developers of all levels—from beginners 
+          to experienced professionals—stay informed about the latest trends, tools, and best practices in the industry.
+        </p>
+        <p>
+          Through clear explanations, practical examples, and real-world insights, we strive to make complex concepts easy to understand 
+          and applicable to your projects.
+        </p>
+      </section>
+
+      <!-- Our Values -->
+      <section class="about-section">
+        <h2>Our Core Values</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h3>Excellence</h3>
+            <p>We maintain the highest standards in content quality and accuracy, ensuring every article is thoroughly researched and professionally written.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h3>Community</h3>
+            <p>We foster a supportive community where developers can learn from each other, share experiences, and grow together.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">
+              <i class="fas fa-rocket"></i>
+            </div>
+            <h3>Innovation</h3>
+            <p>We continuously explore new technologies and methodologies to bring you the most relevant and forward-thinking content.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Team -->
+      <section class="about-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-grid">
+          <div class="team-member">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=John" alt="John Doe">
+            <h3>John Doe</h3>
+            <p class="role">Founder & Lead Writer</p>
+            <p>Senior Software Developer with 8+ years of experience in full-stack development. Passionate about teaching and mentoring.</p>
+            <div class="team-member-social">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="team-member">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Jane" alt="Jane Smith">
+            <h3>Jane Smith</h3>
+            <p class="role">Content Manager</p>
+            <p>Technical writer and CSS enthusiast with a focus on responsive design. 6 years of content creation experience.</p>
+            <div class="team-member-social">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+          <div class="team-member">
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Mike" alt="Mike Johnson">
+            <h3>Mike Johnson</h3>
+            <p class="role">JavaScript Specialist</p>
+            <p>Full-stack JavaScript developer and React expert. Loves breaking down complex concepts into digestible lessons.</p>
+            <div class="team-member-social">
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Milestones -->
+      <section class="about-section">
+        <h2>Our Journey</h2>
+        <div class="milestone-timeline">
+          <div class="milestone">
+            <div class="milestone-year">2020</div>
+            <div class="milestone-text">ModernBlog Founded</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-year">2021</div>
+            <div class="milestone-text">1M+ Monthly Readers</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-year">2023</div>
+            <div class="milestone-text">500+ Articles Published</div>
+          </div>
+          <div class="milestone">
+            <div class="milestone-year">2026</div>
+            <div class="milestone-text">Global Community</div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About ModernBlog</h4>
+        <p>A platform for sharing knowledge about modern web development and technology trends.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ModernBlog. All rights reserved. | Crafted with <i class="fas fa-heart"></i> by Modern Developer</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ModernBlog - Professional Web Development Articles</title>
+        <meta name="description"
+            content="Discover in-depth articles on web development, JavaScript, CSS, and modern web technologies.">
+        <link rel="stylesheet" href="style.css">
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet">
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </head>
+    <body>
+
+        <!-- Navigation Header -->
+        <header class="header">
+            <div class="header-container">
+                <div class="logo">
+                    <i class="fas fa-pen-nib"></i> TechBlog
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <!-- Navigation Menu -->
+                <nav class="nav-menu" id="navMenu">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="articles.html"
+                                class="nav-link">Articles</a></li>
+                        <li><a href="about.html" class="nav-link">About</a></li>
+                        <li><a href="contact.html"
+                                class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Right Side Actions -->
+                <div class="nav-actions">
+                    <div class="search-container">
+                        <input type="text" id="searchInput" class="search-input"
+                            placeholder="Search...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <button class="theme-toggle" id="themeToggle"
+                        title="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1 class="hero-title">Welcome to ModernBlog</h1>
+                <p class="hero-subtitle">Explore in-depth articles on Web
+                    Development, JavaScript, and Modern Web Technologies</p>
+                <a href="articles.html" class="cta-button">Read Latest
+                    Articles</a>
+            </div>
+        </section>
+
+        <!-- Main Content Area -->
+        <div class="main-wrapper">
+            <div class="container">
+
+                <!-- Blog Posts Section -->
+                <main id="blogContainer" class="blog-grid" id="articles">
+
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop"
+                                alt="Mastering HTML5">
+                            <span class="tag">Web Development</span>
+                        </div>
+                        <div class="blog-card-content">
+                            <h2>Mastering HTML5 Semantics</h2>
+                            <p class="excerpt">Learn semantic HTML structure for
+                                building accessible and modern websites.
+                                Discover best practices and common patterns.</p>
+                            <div class="blog-meta">
+                                <span><i class="fas fa-calendar"></i> Feb 20,
+                                    2026</span>
+                                <span><i class="fas fa-user"></i> Amit
+                                    Sinha</span>
+                            </div>
+                            <a href="article-1.html" class="read-more-btn">Read
+                                More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop"
+                                alt="Advanced CSS Design">
+                            <span class="tag">CSS</span>
+                        </div>
+                        <div class="blog-card-content">
+                            <h2>Advanced CSS Layout Techniques</h2>
+                            <p class="excerpt">Master Flexbox and CSS Grid to
+                                create responsive, beautiful layouts. Learn
+                                modern design patterns used by
+                                professionals.</p>
+                            <div class="blog-meta">
+                                <span><i class="fas fa-calendar"></i> Feb 18,
+                                    2026</span>
+                                <span><i class="fas fa-user"></i> Jane
+                                    Smith</span>
+                            </div>
+                            <a href="article-2.html" class="read-more-btn">Read
+                                More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop"
+                                alt="JavaScript ES6">
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <div class="blog-card-content">
+                            <h2>JavaScript ES6+ Features Explained</h2>
+                            <p class="excerpt">Understand modern JavaScript
+                                syntax and concepts. Arrow functions,
+                                destructuring, promises, and async/await made
+                                simple.</p>
+                            <div class="blog-meta">
+                                <span><i class="fas fa-calendar"></i> Feb 15,
+                                    2026</span>
+                                <span><i class="fas fa-user"></i> Mike
+                                    Johnson</span>
+                            </div>
+                            <a href="article-3.html" class="read-more-btn">Read
+                                More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card-image">
+                            <img
+                                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=500&h=300&fit=crop"
+                                alt="Responsive Design">
+                            <span class="tag">Web Design</span>
+                        </div>
+                        <div class="blog-card-content">
+                            <h2>Mobile-First Responsive Design</h2>
+                            <p class="excerpt">Build websites that work
+                                flawlessly on all devices. Learn mobile-first
+                                approach and responsive design best
+                                practices.</p>
+                            <div class="blog-meta">
+                                <span><i class="fas fa-calendar"></i> Feb 12,
+                                    2026</span>
+                                <span><i class="fas fa-user"></i> Sarah
+                                    Lee</span>
+                            </div>
+                            <a href="article-4.html" class="read-more-btn">Read
+                                More <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+
+                </main>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+
+                    <!-- Categories Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Categories</h3>
+                        <ul class="category-list">
+                            <li><a href="#"><i class="fas fa-tag"></i> Web
+                                    Development</a></li>
+                            <li><a href="#"><i class="fas fa-tag"></i>
+                                    JavaScript</a></li>
+                            <li><a href="#"><i class="fas fa-tag"></i> CSS &
+                                    Design</a></li>
+                            <li><a href="#"><i class="fas fa-tag"></i> Career &
+                                    Tips</a></li>
+                            <li><a href="#"><i class="fas fa-tag"></i> Tools &
+                                    Resources</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- About Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">About Me</h3>
+                        <div class="about-box">
+                            <img
+                                src="https://api.dicebear.com/7.x/avataaars/svg?seed=ModernBlog"
+                                alt="About" class="about-avatar">
+                            <p>Passionate web developer with 5+ years of
+                                experience building modern digital experiences.
+                                Coffee enthusiast & tech blogger.</p>
+                            <div class="social-links">
+                                <a href="#" title="Twitter"><i
+                                        class="fab fa-twitter"></i></a>
+                                <a href="#" title="LinkedIn"><i
+                                        class="fab fa-linkedin"></i></a>
+                                <a href="#" title="GitHub"><i
+                                        class="fab fa-github"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Widget -->
+                    <div class="sidebar-widget">
+                        <h3 class="widget-title">Newsletter</h3>
+                        <p class="newsletter-text">Subscribe for weekly articles
+                            on web development.</p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <input type="email" placeholder="Your email"
+                                required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+
+                </aside>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About ModernBlog</h4>
+                    <p>A platform for sharing knowledge about modern web
+                        development and technology trends.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Articles</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Twitter"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i
+                                class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="GitHub"><i
+                                class="fab fa-github"></i></a>
+                        <a href="#" aria-label="Email"><i
+                                class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ModernBlog. All rights reserved. | Crafted with
+                    <i class="fas fa-heart"></i> by Modern Developer</p>
+            </div>
+        </footer>
+
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All Articles - ModernBlog</title>
+  <meta name="description" content="Browse all articles on web development, JavaScript, CSS, and modern web technologies.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-pen-nib"></i> ModernBlog
+      </div>
+      
+      <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="articles.html" class="nav-link">Articles</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-actions">
+        <div class="search-container">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="page-header-content">
+      <h1>All Articles</h1>
+      <p>Explore our comprehensive collection of articles on web development and modern technologies</p>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <div class="main-wrapper">
+    <div class="articles-page-container">
+      <!-- Filter Sidebar -->
+      <aside class="filter-sidebar">
+        <h3 class="filter-title">Filter by Category</h3>
+        <div class="filter-group">
+          <label class="filter-label">
+            <input type="checkbox" class="category-filter" value="web-development" checked>
+            <span>Web Development</span>
+          </label>
+          <label class="filter-label">
+            <input type="checkbox" class="category-filter" value="javascript" checked>
+            <span>JavaScript</span>
+          </label>
+          <label class="filter-label">
+            <input type="checkbox" class="category-filter" value="css" checked>
+            <span>CSS & Design</span>
+          </label>
+          <label class="filter-label">
+            <input type="checkbox" class="category-filter" value="tools" checked>
+            <span>Tools & Resources</span>
+          </label>
+        </div>
+
+        <div class="filter-divider"></div>
+
+        <h3 class="filter-title">Sort By</h3>
+        <div class="sort-group">
+          <select id="sortSelect" class="sort-select">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="popular">Most Popular</option>
+          </select>
+        </div>
+      </aside>
+
+      <!-- Articles Grid -->
+      <main id="articlesGrid" class="articles-grid-large">
+        
+        <article class="article-item" data-category="web-development">
+          <div class="article-image">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=350&fit=crop" alt="Mastering HTML5">
+            <span class="category-badge" data-category="web-development">Web Development</span>
+          </div>
+          <div class="article-info">
+            <h2>Mastering HTML5 Semantics</h2>
+            <div class="article-meta">
+              <span><i class="fas fa-calendar-alt"></i> Feb 20, 2026</span>
+              <span><i class="fas fa-user"></i> Amit Sinha</span>
+              <span><i class="fas fa-clock"></i> 8 min read</span>
+            </div>
+            <p class="article-description">Learn semantic HTML structure for building accessible and modern websites. Discover best practices and common patterns used by industry professionals.</p>
+            <button class="read-article-btn" onclick="window.location.href='article-1.html'">Read Full Article <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </article>
+
+        <article class="article-item" data-category="css">
+          <div class="article-image">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=350&fit=crop" alt="CSS Grid">
+            <span class="category-badge" data-category="css">CSS</span>
+          </div>
+          <div class="article-info">
+            <h2>Advanced CSS Layout Techniques</h2>
+            <div class="article-meta">
+              <span><i class="fas fa-calendar-alt"></i> Feb 18, 2026</span>
+              <span><i class="fas fa-user"></i> Jane Smith</span>
+              <span><i class="fas fa-clock"></i> 10 min read</span>
+            </div>
+            <p class="article-description">Master Flexbox and CSS Grid to create responsive, beautiful layouts. Learn modern design patterns used by professional developers worldwide.</p>
+            <button class="read-article-btn" onclick="window.location.href='article-2.html'">Read Full Article <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </article>
+
+        <article class="article-item" data-category="javascript">
+          <div class="article-image">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=350&fit=crop" alt="JavaScript ES6">
+            <span class="category-badge" data-category="javascript">JavaScript</span>
+          </div>
+          <div class="article-info">
+            <h2>JavaScript ES6+ Features Explained</h2>
+            <div class="article-meta">
+              <span><i class="fas fa-calendar-alt"></i> Feb 15, 2026</span>
+              <span><i class="fas fa-user"></i> Mike Johnson</span>
+              <span><i class="fas fa-clock"></i> 12 min read</span>
+            </div>
+            <p class="article-description">Understand modern JavaScript syntax and concepts. Arrow functions, destructuring, promises, and async/await made simple and practical.</p>
+            <button class="read-article-btn" onclick="window.location.href='article-3.html'">Read Full Article <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </article>
+
+        <article class="article-item" data-category="web-development">
+          <div class="article-image">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=350&fit=crop" alt="Responsive Design">
+            <span class="category-badge" data-category="web-development">Web Development</span>
+          </div>
+          <div class="article-info">
+            <h2>Mobile-First Responsive Design</h2>
+            <div class="article-meta">
+              <span><i class="fas fa-calendar-alt"></i> Feb 12, 2026</span>
+              <span><i class="fas fa-user"></i> Sarah Lee</span>
+              <span><i class="fas fa-clock"></i> 9 min read</span>
+            </div>
+            <p class="article-description">Build websites that work flawlessly on all devices. Learn mobile-first approach and responsive design best practices from the ground up.</p>
+            <button class="read-article-btn" onclick="window.location.href='article-4.html'">Read Full Article <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </article>
+
+        <article class="article-item" data-category="tools">
+          <div class="article-image">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=350&fit=crop" alt="Developer Tools">
+            <span class="category-badge" data-category="tools">Tools</span>
+          </div>
+          <div class="article-info">
+            <h2>Essential Developer Tools in 2026</h2>
+            <div class="article-meta">
+              <span><i class="fas fa-calendar-alt"></i> Feb 10, 2026</span>
+              <span><i class="fas fa-user"></i> Alex Chen</span>
+              <span><i class="fas fa-clock"></i> 11 min read</span>
+            </div>
+            <p class="article-description">Discover the top tools and frameworks that every modern developer should know. From code editors to testing frameworks, we cover it all.</p>
+            <button class="read-article-btn" onclick="window.location.href='article-5.html'">Read Full Article <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </article>
+
+        <article class="article-item" data-category="javascript">
+          <div class="article-image">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&h=350&fit=crop" alt="React Hooks">
+            <span class="category-badge" data-category="javascript">JavaScript</span>
+          </div>
+          <div class="article-info">
+            <h2>React Hooks Deep Dive</h2>
+            <div class="article-meta">
+              <span><i class="fas fa-calendar-alt"></i> Feb 8, 2026</span>
+              <span><i class="fas fa-user"></i> Emma Wilson</span>
+              <span><i class="fas fa-clock"></i> 13 min read</span>
+            </div>
+            <p class="article-description">Master React Hooks and functional components. Learn how to manage state and side effects with useState, useEffect, and custom hooks.</p>
+            <button class="read-article-btn" onclick="window.location.href='article-6.html'">Read Full Article <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </article>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About ModernBlog</h4>
+        <p>A platform for sharing knowledge about modern web development and technology trends.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ModernBlog. All rights reserved. | Crafted with <i class="fas fa-heart"></i> by Modern Developer</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Articles page specific functionality
+    const categoryFilters = document.querySelectorAll(".category-filter");
+    const sortSelect = document.getElementById("sortSelect");
+    const articlesGrid = document.getElementById("articlesGrid");
+    const articleItems = articlesGrid.querySelectorAll(".article-item");
+
+    function filterAndSort() {
+      const selectedCategories = Array.from(categoryFilters)
+        .filter(cb => cb.checked)
+        .map(cb => cb.value);
+
+      articleItems.forEach(item => {
+        const category = item.getAttribute("data-category");
+        item.style.display = selectedCategories.includes(category) ? "block" : "none";
+      });
+    }
+
+    categoryFilters.forEach(filter => {
+      filter.addEventListener("change", filterAndSort);
+    });
+
+    sortSelect.addEventListener("change", (e) => {
+      const sortValue = e.target.value;
+      const itemsArray = Array.from(articleItems);
+      
+      if (sortValue === "newest" || sortValue === "oldest") {
+        itemsArray.reverse();
+      }
+      
+      articlesGrid.innerHTML = '';
+      itemsArray.forEach(item => {
+        articlesGrid.appendChild(item);
+      });
+    });
+  </script>
+</body>
+</html>

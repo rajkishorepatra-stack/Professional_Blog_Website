@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile-First Responsive Design - ModernBlog</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .article-detail-container { max-width: 900px; margin: 0 auto; padding: 3rem 2rem; }
+    .article-header { margin-bottom: 2rem; }
+    .article-category-tag { display: inline-block; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 0.4rem 1rem; border-radius: 2rem; font-size: 0.85rem; font-weight: 600; margin-bottom: 1rem; }
+    .article-detail-container h1 { font-family: 'Poppins', sans-serif; font-size: 2.5rem; line-height: 1.2; margin-bottom: 1rem; color: var(--text-primary); }
+    .article-detail-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border-color); }
+    .article-detail-image { width: 100%; height: auto; max-height: 400px; object-fit: cover; border-radius: 0.75rem; margin-bottom: 2rem; box-shadow: var(--shadow-md); }
+    .article-content { line-height: 1.8; color: var(--text-primary); }
+    .article-content p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+    .article-content h2 { font-family: 'Poppins', sans-serif; font-size: 1.8rem; margin: 2rem 0 1rem; color: var(--text-primary); }
+    .code-block { background: var(--bg-light); padding: 1.5rem; border-radius: 0.5rem; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); font-family: 'Courier New', monospace; font-size: 0.9rem; }
+    .article-author-box { background: var(--bg-white); padding: 2rem; border-radius: 0.75rem; box-shadow: var(--shadow-sm); margin: 3rem 0; display: flex; gap: 1.5rem; }
+    .author-avatar { width: 100px; height: 100px; border-radius: 50%; flex-shrink: 0; }
+    .author-info h3 { font-size: 1.1rem; margin-bottom: 0.25rem; color: var(--text-primary); }
+    .author-info .role { color: var(--primary-color); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.75rem; }
+    .share-buttons { display: flex; gap: 1rem; margin: 2rem 0; padding: 2rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); }
+    .share-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--bg-light); color: var(--primary-color); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: var(--transition); }
+    .share-btn:hover { background: var(--primary-color); color: white; transform: translateY(-3px); }
+    .breadcrumb { display: flex; gap: 0.5rem; align-items: center; margin-bottom: 2rem; color: var(--text-secondary); }
+    .breadcrumb a { color: var(--primary-color); text-decoration: none; }
+    .related-articles { margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--border-color); }
+    .related-articles h2 { font-family: 'Poppins', sans-serif; font-size: 1.5rem; margin-bottom: 2rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .related-card { background: var(--bg-white); border-radius: 0.75rem; overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); }
+    .related-card:hover { transform: translateY(-5px); }
+    .related-card img { width: 100%; height: 150px; object-fit: cover; }
+    .related-link { color: var(--primary-color); text-decoration: none; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; }
+    @media (max-width: 768px) { .article-detail-container { padding: 1.5rem; } .article-detail-container h1 { font-size: 1.8rem; } .related-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-container">
+      <div class="logo"><i class="fas fa-pen-nib"></i> ModernBlog</div>
+      <button class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></button>
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="articles.html" class="nav-link">Articles</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="nav-actions">
+        <div class="search-container"><input type="text" id="searchInput" class="search-input" placeholder="Search..."><i class="fas fa-search"></i></div>
+        <button class="theme-toggle" id="themeToggle"><i class="fas fa-moon"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="main-wrapper">
+    <div class="article-detail-container">
+      <div class="breadcrumb"><a href="index.html">Home</a> <i class="fas fa-chevron-right"></i> <a href="articles.html">Articles</a> <i class="fas fa-chevron-right"></i> <span>Responsive Design</span></div>
+
+      <div class="article-header">
+        <span class="article-category-tag">Web Development</span>
+        <h1>Mobile-First Responsive Design</h1>
+        <div class="article-detail-meta">
+          <span><i class="fas fa-calendar-alt"></i> February 12, 2026</span>
+          <span><i class="fas fa-user"></i> Sarah Lee</span>
+          <span><i class="fas fa-clock"></i> 9 min read</span>
+        </div>
+      </div>
+
+      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=900&h=450&fit=crop" alt="Responsive Design" class="article-detail-image">
+
+      <div class="share-buttons">
+        <a href="#" class="share-btn"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="share-btn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="share-btn"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="share-btn"><i class="fas fa-link"></i></a>
+      </div>
+
+      <article class="article-content">
+        <p>Mobile-first design has become the standard approach in modern web development. With over 50% of web traffic coming from mobile devices, designing for smaller screens first ensures your website serves all users effectively.</p>
+
+        <h2>Why Mobile-First?</h2>
+        <p>Mobile-first design forces developers to prioritize content and functionality. By starting with mobile constraints, you create a better experience for all users and improve overall performance.</p>
+
+        <h2>Implementation Strategy</h2>
+        <div class="code-block">
+/* Mobile styles first (base) */<br>
+.container {<br>
+&nbsp;&nbsp;display: block;<br>
+&nbsp;&nbsp;width: 100%;<br>
+}<br>
+<br>
+/* Tablet and larger */<br>
+@media (min-width: 768px) {<br>
+&nbsp;&nbsp;.container {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;display: grid;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;grid-template-columns: 1fr 1fr;<br>
+&nbsp;&nbsp;}<br>
+}
+        </div>
+
+        <h2>Key Principles</h2>
+        <p>Focus on performance, accessible navigation, readable typography, and touch-friendly interactive elements. Test extensively on real devices, not just browser emulators.</p>
+
+        <h2>Conclusion</h2>
+        <p>Mobile-first responsive design is essential for modern web development. It improves user experience, boosts SEO, and creates more maintainable code. Start mobile and enhance for larger screens!</p>
+      </article>
+
+      <div class="article-author-box">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Sarah Lee" class="author-avatar">
+        <div class="author-info">
+          <h3>Sarah Lee</h3>
+          <p class="role">Responsive Design Expert</p>
+          <p>Sarah specializes in creating mobile-first responsive designs. With 7 years of experience, she helps teams build inclusive, performant web experiences.</p>
+        </div>
+      </div>
+
+      <section class="related-articles">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+          <div class="related-card"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=150&fit=crop" alt="HTML5"><div class="related-card-content"><h3>HTML5</h3><a href="article-1.html" class="related-link">Read <i class="fas fa-arrow-right"></i></a></div></div>
+          <div class="related-card"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=150&fit=crop" alt="CSS"><div class="related-card-content"><h3>CSS Layout</h3><a href="article-2.html" class="related-link">Read <i class="fas fa-arrow-right"></i></a></div></div>
+          <div class="related-card"><img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=150&fit=crop" alt="JavaScript"><div class="related-card-content"><h3>JavaScript</h3><a href="article-3.html" class="related-link">Read <i class="fas fa-arrow-right"></i></a></div></div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section"><h4>About ModernBlog</h4><p>A platform for sharing knowledge about modern web development.</p></div>
+      <div class="footer-section"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="articles.html">Articles</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-section"><h4>Follow Us</h4><div class="social-icons"><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a><a href="#"><i class="fas fa-envelope"></i></a></div></div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 ModernBlog. All rights reserved. | Crafted with <i class="fas fa-heart"></i> by Modern Developer</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

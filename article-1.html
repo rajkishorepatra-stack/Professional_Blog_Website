@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mastering HTML5 Semantics - ModernBlog</title>
+  <meta name="description" content="Learn semantic HTML structure for building accessible and modern websites.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Article Detail Page Styles */
+    .article-detail-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .article-header {
+      margin-bottom: 2rem;
+    }
+
+    .article-category-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .article-detail-container h1 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .article-detail-meta {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .article-detail-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .article-detail-meta i {
+      color: var(--primary-color);
+    }
+
+    .article-detail-image {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 0.75rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+
+    .article-content {
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+
+    .article-content p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .article-content h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      margin: 2rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .article-content h3 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      margin: 1.5rem 0 1rem;
+      color: var(--text-primary);
+    }
+
+    .article-content ul,
+    .article-content ol {
+      margin: 1.5rem 0 1.5rem 2rem;
+    }
+
+    .article-content li {
+      margin-bottom: 0.75rem;
+      font-size: 1.05rem;
+    }
+
+    .code-block {
+      background: var(--bg-light);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--primary-color);
+      overflow-x: auto;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+    }
+
+    .quote-block {
+      background: var(--bg-light);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin: 1.5rem 0;
+      border-left: 4px solid var(--primary-color);
+      font-style: italic;
+      color: var(--text-secondary);
+    }
+
+    .article-author-box {
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow-sm);
+      margin: 3rem 0;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .author-avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: var(--shadow-md);
+      flex-shrink: 0;
+    }
+
+    .author-info h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      color: var(--text-primary);
+    }
+
+    .author-info .role {
+      color: var(--primary-color);
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .author-info p {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Related Articles */
+    .related-articles {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 2px solid var(--border-color);
+    }
+
+    .related-articles h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.5rem;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .related-card {
+      background: var(--bg-white);
+      border-radius: 0.75rem;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+
+    .related-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .related-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .related-card-content {
+      padding: 1rem;
+    }
+
+    .related-card-content h3 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+    }
+
+    .related-card-content p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    .related-link {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: var(--transition);
+    }
+
+    .related-link:hover {
+      gap: 1rem;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      margin-bottom: 2rem;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .breadcrumb a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    /* Share Buttons */
+    .share-buttons {
+      display: flex;
+      gap: 1rem;
+      margin: 2rem 0;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .share-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-light);
+      color: var(--primary-color);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1rem;
+    }
+
+    .share-btn:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .article-detail-container {
+        padding: 1.5rem;
+      }
+
+      .article-detail-container h1 {
+        font-size: 1.8rem;
+      }
+
+      .article-detail-meta {
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .article-author-box {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .related-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-pen-nib"></i> ModernBlog
+      </div>
+      
+      <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="articles.html" class="nav-link">Articles</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-actions">
+        <div class="search-container">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Article Content -->
+  <div class="main-wrapper">
+    <div class="article-detail-container">
+
+      <!-- Breadcrumb -->
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <a href="articles.html">Articles</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>Mastering HTML5 Semantics</span>
+      </div>
+
+      <!-- Article Header -->
+      <div class="article-header">
+        <span class="article-category-tag">Web Development</span>
+        <h1>Mastering HTML5 Semantics</h1>
+        
+        <div class="article-detail-meta">
+          <span><i class="fas fa-calendar-alt"></i> February 20, 2026</span>
+          <span><i class="fas fa-user"></i> Amit Sinha</span>
+          <span><i class="fas fa-clock"></i> 8 min read</span>
+          <span><i class="fas fa-eye"></i> 2,350 views</span>
+        </div>
+      </div>
+
+      <!-- Featured Image -->
+      <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=900&h=450&fit=crop" alt="HTML5 Semantics" class="article-detail-image">
+
+      <!-- Share Buttons -->
+      <div class="share-buttons">
+        <a href="#" class="share-btn" title="Share on Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="share-btn" title="Share on LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="share-btn" title="Share on Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="share-btn" title="Copy link"><i class="fas fa-link"></i></a>
+      </div>
+
+      <!-- Article Content -->
+      <article class="article-content">
+        
+        <p>
+          HTML5 semantic elements are powerful tools that give meaning to web content. They don't just describe 
+          how the content looks, but rather what it means. In this comprehensive guide, we'll explore how to use 
+          semantic HTML to make your websites more accessible, SEO-friendly, and maintainable.
+        </p>
+
+        <h2>What Are Semantic Elements?</h2>
+        <p>
+          Semantic HTML simply means using HTML tags that clearly describe their purpose and content. Instead of 
+          using generic &lt;div&gt; tags everywhere, we use specific tags like &lt;header&gt;, &lt;nav&gt;, 
+          &lt;article&gt;, &lt;section&gt;, and &lt;footer&gt; to structure our content meaningfully.
+        </p>
+
+        <div class="quote-block">
+          "Semantic elements help both machines and humans understand the meaning of your content." - Web Standards
+        </div>
+
+        <h2>Key Benefits of Semantic HTML</h2>
+        <h3>1. Improved Accessibility</h3>
+        <p>
+          Screen readers and assistive technologies rely on semantic HTML to properly interpret page structure. 
+          Using semantic elements makes your content accessible to people with disabilities, ensuring a better 
+          user experience for everyone.
+        </p>
+
+        <h3>2. Better SEO</h3>
+        <p>
+          Search engines use semantic elements to better understand your content. Proper use of semantic tags 
+          can improve your search engine rankings and help crawlers index your content more accurately.
+        </p>
+
+        <h3>3. Cleaner Code</h3>
+        <p>
+          Semantic HTML results in cleaner, more maintainable code. Your markup becomes self-documenting, 
+          making it easier for other developers to understand your structure at a glance.
+        </p>
+
+        <h2>Essential Semantic Elements</h2>
+        <p>Let's explore the most important semantic HTML5 elements:</p>
+
+        <h3>&lt;header&gt;</h3>
+        <p>Represents introductory content or navigation. Typically contains the site logo, main heading, and navigation.</p>
+        <div class="code-block">
+&lt;header&gt;<br>
+&nbsp;&nbsp;&lt;h1&gt;My Website&lt;/h1&gt;<br>
+&nbsp;&nbsp;&lt;nav&gt;...&lt;/nav&gt;<br>
+&lt;/header&gt;
+        </div>
+
+        <h3>&lt;nav&gt;</h3>
+        <p>Contains links to other web pages, typically the main navigation of your site.</p>
+        <div class="code-block">
+&lt;nav&gt;<br>
+&nbsp;&nbsp;&lt;ul&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;/ul&gt;<br>
+&lt;/nav&gt;
+        </div>
+
+        <h3>&lt;article&gt;</h3>
+        <p>Represents independent, self-contained content. Perfect for blog posts, news articles, or forum posts.</p>
+
+        <h3>&lt;section&gt;</h3>
+        <p>Defines a section of a document, typically with its own heading.</p>
+
+        <h3>&lt;footer&gt;</h3>
+        <p>Contains footer information like copyright, contact info, or related links.</p>
+
+        <h2>Best Practices</h2>
+        <ul>
+          <li>Use semantic elements whenever their meaning matches the content</li>
+          <li>Don't use semantic elements just for their styling</li>
+          <li>Combine semantic elements with proper heading hierarchy</li>
+          <li>Test your HTML with accessibility tools</li>
+          <li>Keep learning and staying updated with web standards</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>
+          Semantic HTML5 is not just a buzzword—it's a fundamental practice for modern web development. 
+          By using semantic elements properly, you create websites that are more accessible, more SEO-friendly, 
+          and easier to maintain. Start implementing these practices in your next project and see the difference it makes!
+        </p>
+
+      </article>
+
+      <!-- Author Box -->
+      <div class="article-author-box">
+        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Amit" alt="Amit Sinha" class="author-avatar">
+        <div class="author-info">
+          <h3>Amit Sinha</h3>
+          <p class="role">Senior Full-Stack Developer</p>
+          <p>
+            AMIT is a passionate web developer with 8+ years of experience. He specializes in modern web technologies 
+            and loves sharing knowledge through writing and mentoring. When not coding, you can find him drinking coffee 
+            or exploring new tech trends.
+          </p>
+        </div>
+      </div>
+
+      <!-- Related Articles -->
+      <section class="related-articles">
+        <h2>Related Articles</h2>
+        <div class="related-grid">
+          <div class="related-card">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=150&fit=crop" alt="CSS Grid">
+            <div class="related-card-content">
+              <h3>Advanced CSS Layout</h3>
+              <p>Master Flexbox and CSS Grid for modern layouts</p>
+              <a href="article-2.html" class="related-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="related-card">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=150&fit=crop" alt="JavaScript">
+            <div class="related-card-content">
+              <h3>JavaScript ES6+</h3>
+              <p>Modern JavaScript features explained</p>
+              <a href="article-3.html" class="related-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="related-card">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=300&h=150&fit=crop" alt="Responsive Design">
+            <div class="related-card-content">
+              <h3>Responsive Design</h3>
+              <p>Mobile-first web design approach</p>
+              <a href="article-4.html" class="related-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About ModernBlog</h4>
+        <p>A platform for sharing knowledge about modern web development and technology trends.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ModernBlog. All rights reserved. | Crafted with <i class="fas fa-heart"></i> by Modern Developer</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

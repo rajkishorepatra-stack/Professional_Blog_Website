@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - ModernBlog</title>
+  <meta name="description" content="Get in touch with the ModernBlog team. We'd love to hear from you!">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Contact Page Specific Styles */
+    .contact-hero {
+      background: linear-gradient(135deg, #4a6cf7 0%, #6a82fb 100%);
+      color: white;
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .contact-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .contact-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .contact-card {
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      gap: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .contact-card-content h3 {
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-card-content p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .contact-card-content a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .contact-card-content a:hover {
+      color: var(--primary-dark);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      background: var(--bg-white);
+      padding: 2rem;
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-form h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 0.4rem;
+      background: transparent;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(74, 108, 247, 0.1);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 0.875rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: white;
+      border: none;
+      border-radius: 0.4rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .success-message {
+      display: none;
+      background: #d1fae5;
+      color: #047857;
+      padding: 1rem;
+      border-radius: 0.4rem;
+      margin-bottom: 1rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .success-message.show {
+      display: flex;
+    }
+
+    /* Social Links Section */
+    .social-section {
+      background: var(--bg-light);
+      padding: 3rem 2rem;
+      text-align: center;
+      border-radius: 0.75rem;
+      margin-top: 2rem;
+    }
+
+    .social-section h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    .social-links-contact {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: white;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 1.3rem;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .social-link:hover {
+      background: var(--primary-color);
+      color: white;
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    @media (max-width: 768px) {
+      .contact-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-wrapper {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Header -->
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-pen-nib"></i> ModernBlog
+      </div>
+      
+      <button class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      
+      <nav class="nav-menu" id="navMenu">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="articles.html" class="nav-link">Articles</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <div class="nav-actions">
+        <div class="search-container">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search...">
+          <i class="fas fa-search"></i>
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <h1>Get In Touch</h1>
+    <p>We'd love to hear from you. Reach out to us anytime!</p>
+  </section>
+
+  <!-- Contact Content -->
+  <div class="main-wrapper">
+    <div class="contact-wrapper">
+      <div class="contact-container">
+
+        <!-- Contact Information -->
+        <div class="contact-info">
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-card-content">
+              <h3>Address</h3>
+              <p>123 Web Dev Street<br>Tech City, TC 12345<br>United States</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-card-content">
+              <h3>Phone</h3>
+              <p><a href="tel:+1234567890">+1 (234) 567-890</a></p>
+              <p>Monday - Friday: 9 AM - 6 PM EST</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-card-content">
+              <h3>Email</h3>
+              <p><a href="mailto:hello@modernblog.com">hello@modernblog.com</a></p>
+              <p>We'll respond within 24 hours</p>
+            </div>
+          </div>
+
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-card-content">
+              <h3>Business Hours</h3>
+              <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday - Sunday: Closed</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Contact Form -->
+        <form class="contact-form" id="contactForm">
+          <div class="success-message" id="successMessage">
+            <span>✓ Message sent successfully! We'll be in touch soon.</span>
+            <button type="button" onclick="this.parentElement.classList.remove('show')" style="background: none; border: none; color: inherit; cursor: pointer; font-size: 1.2rem;">&times;</button>
+          </div>
+
+          <h2>Send us a Message</h2>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject *</label>
+              <input type="text" id="subject" name="subject" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="category">Message Category *</label>
+            <select id="category" name="category" required>
+              <option value="">Select a category</option>
+              <option value="general">General Inquiry</option>
+              <option value="partnership">Partnership Opportunity</option>
+              <option value="feedback">Feedback</option>
+              <option value="bug">Bug Report</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" required placeholder="Tell us more about your message..."></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+
+      </div>
+
+      <!-- Social Section -->
+      <div class="social-section">
+        <h3>Follow Us On Social Media</h3>
+        <div class="social-links-contact">
+          <a href="#" class="social-link" title="Twitter" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-link" title="LinkedIn" aria-label="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="#" class="social-link" title="GitHub" aria-label="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="social-link" title="Facebook" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+          </a>
+          <a href="#" class="social-link" title="Instagram" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>About ModernBlog</h4>
+        <p>A platform for sharing knowledge about modern web development and technology trends.</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="articles.html">Articles</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-icons">
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 ModernBlog. All rights reserved. | Crafted with <i class="fas fa-heart"></i> by Modern Developer</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Contact Form Handler
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('successMessage');
+
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Simulate form submission
+      successMessage.classList.add('show');
+      
+      // Reset form
+      contactForm.reset();
+      
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        successMessage.classList.remove('show');
+      }, 5000);
+    });
+  </script>
+</body>
+</html>
